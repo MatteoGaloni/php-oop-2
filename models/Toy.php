@@ -1,5 +1,5 @@
 <?php
-class Toy extends Category
+class Toy extends Product
 {
     private $material;
     public function __construct($name, $price, Category $category, $material)
