@@ -8,7 +8,7 @@ class Toy extends Product
         $this->material = $material;
     }
 
-    public function getSize()
+    public function getMaterial()
     {
         return $this->material;
     }

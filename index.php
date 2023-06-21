@@ -2,7 +2,7 @@
 require __DIR__ . "/models/Category.php";
 require __DIR__ . "/models/Product.php";
 require __DIR__ . "/models/Food.php";
-require __DIR__ . "/models/DogKennel.php";
+require __DIR__ . "/models/Dogkennel.php";
 require __DIR__ . "/models/Toy.php";
 
 $prodottoGenerico = new Product(
@@ -30,7 +30,7 @@ $prodottoToyGatto = new Toy(
     "Materiale = Velcro"
 );
 
-$prodotti = [$prodottoGenerico, $prodottoCiboGatto, $prodottoCucciaCane, $prodottoToyGatto]
+$products = [$prodottoGenerico, $prodottoCiboGatto, $prodottoCucciaCane, $prodottoToyGatto]
 ?>
 
 <!DOCTYPE html>
@@ -52,19 +52,23 @@ $prodotti = [$prodottoGenerico, $prodottoCiboGatto, $prodottoCucciaCane, $prodot
                 <div class="col-3">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title"><?php echo $product->name ?></div>
+                            <h3 class="card-title"><?php echo $product->getname() ?></h3>
+                            <h3 class="card-title"><?php echo $product->getprice() ?></h3>
+                            <h3 class="card-title"><?php echo $product->getSize() ?></h3>
+
+
 
 
                         </div>
-                        <h2><?php var_dump($prodottoGenerico) ?></h2>
-                        <h2><?php var_dump($prodottoCiboGatto) ?></h2>
-                        <h2><?php var_dump($prodottoCucciaCane) ?></h2>
-                        <h2><?php var_dump($prodottoToyGatto) ?></h2>
                     </div>
                 </div>
             <?php } ?>
         </div>
 
+        <h2><?php var_dump($prodottoGenerico) ?></h2>
+        <h2><?php var_dump($prodottoCiboGatto) ?></h2>
+        <h2><?php var_dump($prodottoCucciaCane) ?></h2>
+        <h2><?php var_dump($prodottoToyGatto) ?></h2>
     </div>
 
 </body>

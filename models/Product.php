@@ -2,7 +2,7 @@
 class Product
 {
     public $name;
-    private $price;
+    public $price;
     public $category;
 
     function __construct($name, $price, Category $category)
@@ -13,7 +13,7 @@ class Product
         $this->category = $category;
     }
 
-    public function getName()
+    public function getname()
     {
         return $this->name;
     }
@@ -26,16 +26,4 @@ class Product
     {
         $this->price = $price;
     }
-    // public function getcategory()
-    // {
-    //     return $this->category;
-    // }
-    // public function setDiscount($discount){
-    //     if($this->price > 60){
-    //     $this->discount = 30;
-    //     } else {
-    //         $this->discount = 0;
-    //     }
-    // }
-
 }
