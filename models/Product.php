@@ -26,14 +26,9 @@ class Product
 
     public function getprice()
     {
-        if (is_nan($this->price)) {
+        if (is_nan($this->price) !== false) {
             throw new Exception("Quello che hai inserito non è un numero");
         }
         return $this->price . " €";
     }
-
-    // public function setprice($price)
-    // {
-    //     $this->price = $price;
-    // }
 }

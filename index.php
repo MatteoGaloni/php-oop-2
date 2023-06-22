@@ -7,7 +7,7 @@ require_once __DIR__ . "/models/Toy.php";
 
 $prodottoGenerico = new Product(
     "Prodotto Generico",
-    false,
+    "ciaoo",
     new Category("Per cani", "<i class='fa-solid fa-cat'></i><i class='fa-solid fa-dog'></i>")
 );
 $prodottoGenerico->img = "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg";
@@ -98,7 +98,7 @@ $products[3]->setDescription("Si tratta di un gioco per gatti");
                                 }
                                 ?>
                             </h3>
-                            <h3>Descrizione: <?php echo $product->getDescription() ?></h3>
+                            <h3><?php echo $product->getDescription() ?></h3>
                         </div>
 
                     </div>
