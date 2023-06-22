@@ -1,6 +1,10 @@
 <?php
+
+require_once __DIR__ . "/../traits/Description.php";
 class Product
 {
+    use Description;
+
     public $name;
     public $price;
     public $img;
@@ -22,10 +26,14 @@ class Product
 
     public function getprice()
     {
+        if (is_nan($this->price)) {
+            throw new Exception("Quello che hai inserito non è un numero");
+        }
         return $this->price . " €";
     }
-    public function setprice($price)
-    {
-        $this->price = $price;
-    }
+
+    // public function setprice($price)
+    // {
+    //     $this->price = $price;
+    // }
 }

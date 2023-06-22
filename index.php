@@ -1,13 +1,13 @@
 <?php
-require __DIR__ . "/models/Category.php";
-require __DIR__ . "/models/Product.php";
-require __DIR__ . "/models/Food.php";
-require __DIR__ . "/models/Dogkennel.php";
-require __DIR__ . "/models/Toy.php";
+require_once __DIR__ . "/models/Category.php";
+require_once __DIR__ . "/models/Product.php";
+require_once __DIR__ . "/models/Food.php";
+require_once __DIR__ . "/models/Dogkennel.php";
+require_once __DIR__ . "/models/Toy.php";
 
 $prodottoGenerico = new Product(
     "Prodotto Generico",
-    15.55,
+    false,
     new Category("Per cani", "<i class='fa-solid fa-cat'></i><i class='fa-solid fa-dog'></i>")
 );
 $prodottoGenerico->img = "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg";
@@ -16,7 +16,7 @@ $prodottoGenerico->img = "https://st4.depositphotos.com/14953852/22772/v/600/dep
 
 $prodottoCiboGatto = new Food(
     "Croccantini Dietetici",
-    19.99,
+    10.99,
     new Category("Per gatti", "<i class='fa-solid fa-cat'></i>"),
     "Tipo cibo = Secco"
 );
@@ -42,8 +42,16 @@ $prodottoToyGatto = new Toy(
 );
 $prodottoToyGatto->img = "https://m.media-amazon.com/images/I/61cuSl4ycyL.jpg";
 
-$products = [$prodottoGenerico, $prodottoCiboGatto, $prodottoCucciaCane, $prodottoToyGatto]
+$products = [$prodottoGenerico, $prodottoCiboGatto, $prodottoCucciaCane, $prodottoToyGatto];
+
+$products[0]->setDescription();
+$products[1]->setDescription("Si tratta di cibo per gatti");
+$products[2]->setDescription("Si tratta di una cuccia per cani");
+$products[3]->setDescription("Si tratta di un gioco per gatti");
+
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,9 +75,14 @@ $products = [$prodottoGenerico, $prodottoCiboGatto, $prodottoCucciaCane, $prodot
                         <div class="card-body">
                             <h5>Prodotto di tipo : <?php echo get_class($product) ?></h5>
                             <img class="card-img-top" src="<?php echo $product->img ?>" alt="ciao" />
-
                             <h3 class="card-title"><?php echo $product->getname() ?></h3>
-                            <h3 class="card-title"><?php echo $product->getprice() ?></h3>
+                            <h3 class="card-title">
+                                <?php try {
+                                    echo $product->getprice();
+                                } catch (Exception $e) {
+                                    echo "C'è un errore";
+                                }  ?>
+                            </h3>
                             <h3 class="card-title"><?php echo $product->category->name ?></h3>
                             <h3><?php echo $product->category->icon  ?></h3>
                             <h3 class="card-title">
@@ -85,7 +98,9 @@ $products = [$prodottoGenerico, $prodottoCiboGatto, $prodottoCucciaCane, $prodot
                                 }
                                 ?>
                             </h3>
+                            <h3>Descrizione: <?php echo $product->getDescription() ?></h3>
                         </div>
+
                     </div>
                 </div>
             <?php } ?>
