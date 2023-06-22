@@ -26,8 +26,8 @@ class Product
 
     public function getprice()
     {
-        if (is_nan($this->price) !== false) {
-            throw new Exception("Quello che hai inserito non è un numero");
+        if (!is_numeric(($this->price))) {
+            throw new Exception("<br> Quello che hai inserito non è un numero");
         }
         return $this->price . " €";
     }
