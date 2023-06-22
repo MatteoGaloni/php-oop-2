@@ -3,7 +3,9 @@ class Product
 {
     public $name;
     public $price;
+    public $img;
     public $category;
+
 
     function __construct($name, $price, Category $category)
 
@@ -20,7 +22,7 @@ class Product
 
     public function getprice()
     {
-        return $this->price;
+        return $this->price . " €";
     }
     public function setprice($price)
     {
